@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/nextjs,node,visualstudiocode,go
-# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,node,visualstudiocode,go
+# Created by https://www.toptal.com/developers/gitignore/api/nextjs,node,visualstudiocode,go,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,node,visualstudiocode,go,react
 
 ### Go ###
 # If you prefer the allow list template instead of the deny list, see community template:
@@ -214,4 +214,20 @@ dist
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/nextjs,node,visualstudiocode,go
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+# End of https://www.toptal.com/developers/gitignore/api/nextjs,node,visualstudiocode,go,react
