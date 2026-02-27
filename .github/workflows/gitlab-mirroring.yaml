@@ -1,6 +1,11 @@
 name: Gitlab Mirroring
 
-on: [push, delete]
+on:
+  push:
+    branches:
+      - main
+      - dev
+  delete:
 
 jobs:
   gitlab-mirroring:
