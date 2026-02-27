@@ -6,7 +6,6 @@ jobs:
   gitlab-mirroring:
     name: Gitlab Mirroring
     runs-on: ubuntu-latest
-    if: github.repository != 'koudmain/koudmain'
 
     steps:
       - uses: actions/checkout@v6
