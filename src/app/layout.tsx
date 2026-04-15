@@ -1,6 +1,24 @@
+import { Metadata } from 'next';
 import './global.css';
 
-export default function RootLayout({
+export const metadata: Metadata = {
+  title: 'Koudmain',
+  description: "L'intérim version Uber pour la restauration",
+  icons: {
+    icon: [
+      {
+        url: '/images/logo_black_transparant.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/images/logo_white_transparant.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+  },
+};
+
+function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -13,3 +31,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export default RootLayout;
