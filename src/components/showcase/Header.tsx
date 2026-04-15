@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 import { Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Header = () => {
+function Header()
+{
   const pathname = usePathname();
 
   const tabs = [
@@ -66,6 +67,6 @@ const Header = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Header;

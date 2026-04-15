@@ -1,11 +1,11 @@
 import { Mail } from 'lucide-react';
 
-export default function Footer() {
+function Footer()
+{
   return (
     <footer className="bg-primary text-white py-12 px-6 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Branding */}
           <div className="col-span-1 md:col-span-1">
             <h2 className="text-2xl font-black tracking-tighter mb-4 text-white">KOUDMAIN</h2>
             <p className="text-zinc-400 text-sm leading-relaxed">
@@ -14,7 +14,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Liens rapides */}
           <div>
             <h3 className="font-bold mb-4 text-xs uppercase tracking-widest text-secondary">Plateforme</h3>
             <ul className="space-y-3 text-zinc-300 text-sm">
@@ -24,7 +23,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Légal */}
           <div>
             <h3 className="font-bold mb-4 text-xs uppercase tracking-widest text-secondary">Légal</h3>
             <ul className="space-y-3 text-zinc-300 text-sm">
@@ -34,7 +32,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Social */}
           <div>
             <h3 className="font-bold mb-4 text-xs uppercase tracking-widest text-secondary">Contact</h3>
             <div className="flex flex-col gap-4">
@@ -46,7 +43,6 @@ export default function Footer() {
                 koudmain.admin@gmail.com
               </a>
               <div className="flex gap-4 mt-2">
-                {/* SVG LinkedIn Manuel pour éviter l'erreur Lucide */}
                 <a
                   href="#"
                   className="bg-zinc-700 p-2 rounded-full hover:bg-[#0077b5] transition-all"
@@ -72,3 +68,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

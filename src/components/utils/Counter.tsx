@@ -14,7 +14,8 @@ interface CounterProps {
   direction?: "up" | "down";
 }
 
-export default function Counter({ value, direction = "up" }: CounterProps) {
+function Counter({ value, direction = "up" }: CounterProps)
+{
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -41,3 +42,5 @@ export default function Counter({ value, direction = "up" }: CounterProps) {
     </motion.span>
   );
 }
+
+export default Counter;
