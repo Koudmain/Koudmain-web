@@ -1,12 +1,11 @@
-"use client";
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-function Header()
-{
+function Header() {
   const pathname = usePathname();
 
   const tabs = [
@@ -19,7 +18,6 @@ function Header()
     <nav className="fixed top-0 z-50 w-full border-b border-zinc-100 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <div className="flex items-center gap-10">
-
           <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/images/logo_black_transparant.png"
@@ -29,9 +27,7 @@ function Header()
               className="h-8 w-8 object-contain transition-transform group-hover:scale-110"
               priority
             />
-            <span className="text-2xl font-black tracking-tighter text-primary">
-              KOUDMAIN
-            </span>
+            <span className="text-2xl font-black tracking-tighter text-primary">KOUDMAIN</span>
           </Link>
 
           <div className="relative hidden items-center gap-1 rounded-full bg-zinc-100 p-1 md:flex">
@@ -47,7 +43,7 @@ function Header()
                   <motion.div
                     layoutId="active-pill"
                     className="absolute inset-0 z-[-1] rounded-full bg-white shadow-sm"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10">{tab.label}</span>

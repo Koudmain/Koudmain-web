@@ -1,10 +1,9 @@
-"use client";
+'use client';
 import { Clock, ShieldCheck, FileCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-function HomePage()
-{
+function HomePage() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -23,10 +22,16 @@ function HomePage()
             Mise en relation en temps réel pour sauver vos services.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link href="/employer" className="rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-black text-center">
+            <Link
+              href="/employer"
+              className="rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-black text-center"
+            >
               Je recrute (Employeur)
             </Link>
-            <Link href="/worker" className="rounded-xl border-2 border-zinc-200 bg-white px-8 py-4 font-bold transition-all hover:border-secondary-300 text-center">
+            <Link
+              href="/worker"
+              className="rounded-xl border-2 border-zinc-200 bg-white px-8 py-4 font-bold transition-all hover:border-secondary-300 text-center"
+            >
               Je travaille (Travailleur)
             </Link>
           </div>
@@ -46,7 +51,8 @@ function HomePage()
               </div>
               <h3 className="mb-3 text-2xl font-bold text-primary">Zéro Administratif</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Oubliez la paperasse. Nous automatisons le <strong>CDDU</strong>, la <strong>DPAE</strong> et la signature électronique sécurisée.
+                Oubliez la paperasse. Nous automatisons le <strong>CDDU</strong>, la{' '}
+                <strong>DPAE</strong> et la signature électronique sécurisée.
               </p>
             </div>
 
@@ -56,7 +62,8 @@ function HomePage()
               </div>
               <h3 className="mb-3 text-2xl font-bold text-primary">Urgence Maîtrisée</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Un désistement à 11h ? Trouvez un remplaçant qualifié en <strong>moins d'une heure</strong> pour sauver votre service.
+                Un désistement à 11h ? Trouvez un remplaçant qualifié en{' '}
+                <strong>moins d'une heure</strong> pour sauver votre service.
               </p>
             </div>
 
@@ -66,7 +73,8 @@ function HomePage()
               </div>
               <h3 className="mb-3 text-2xl font-bold text-primary">Confiance Totale</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Recrutez sereinement grâce à notre système de <strong>notation bidirectionnel</strong> et la vérification rigoureuse des profils.
+                Recrutez sereinement grâce à notre système de{' '}
+                <strong>notation bidirectionnel</strong> et la vérification rigoureuse des profils.
               </p>
             </div>
           </div>
