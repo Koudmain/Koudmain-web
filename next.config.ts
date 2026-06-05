@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: '/koudmain-web',
-  assetPrefix: '/koudmain-web',
+  basePath: '/Koudmain-web',
+  assetPrefix: '/Koudmain-web/',
 };
 
 export default nextConfig;
