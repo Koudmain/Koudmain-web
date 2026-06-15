@@ -11,7 +11,7 @@ concurrency:
 jobs:
   events:
     name: "Events & Automation"
-    uses: Koudmain/.github/.github/workflows/orchestrator-events.yml@KDM-47/fix-bug-force-ci
+    uses: Koudmain/.github/.github/workflows/orchestrator-events.yml@main
     permissions:
       pull-requests: write
     with:
