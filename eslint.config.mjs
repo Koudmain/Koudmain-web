@@ -101,7 +101,7 @@ const eslintConfig = defineConfig([
     files: ["**/*.ts"],
     plugins: { unicorn: pluginUnicorn },
     rules: {
-      "unicorn/filename-case": ["error", { case: "camelCase" }],
+      "unicorn/filename-case": ["error", { case: "camelCase", checkDirectories: false }],
     },
   },
   {
@@ -114,8 +114,10 @@ const eslintConfig = defineConfig([
           case: "pascalCase",
           ignore: [
             "^layout\\.tsx$",
+            "^page\\.tsx$",
             "^\\[.*\\]\\.tsx$",
           ],
+          checkDirectories: false,
         },
       ],
     },

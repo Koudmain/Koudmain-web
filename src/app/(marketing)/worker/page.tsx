@@ -48,8 +48,8 @@ function WorkerPage() {
               </div>
               <h3 className="mb-2 text-xl font-bold text-primary">Rémunération Juste</h3>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                Des tarifs transparents et attractifs. Vous connaissez votre gain avant même
-                d'accepter la mission.
+                {`Des tarifs transparents et attractifs. Vous connaissez votre gain avant même
+                d'accepter la mission.`}
               </p>
             </div>
 
@@ -70,8 +70,8 @@ function WorkerPage() {
               </div>
               <h3 className="mb-2 text-xl font-bold text-primary">Liberté Absolue</h3>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                Pas de patron, pas d'engagement. Vous choisissez vos horaires, vos lieux et vos
-                missions.
+                {`Pas de patron, pas d'engagement. Vous choisissez vos horaires, vos lieux et vos
+                missions.`}
               </p>
             </div>
           </div>
@@ -105,8 +105,8 @@ function WorkerPage() {
               <div>
                 <h4 className="text-2xl font-bold text-primary">Postulez en un éclair</h4>
                 <p className="text-zinc-500 mt-2">
-                  Recevez des notifications dès qu'un restaurant autour de vous a besoin d'un
-                  Koudmain. Un clic pour manifester votre intérêt.
+                  {`Recevez des notifications dès qu'un restaurant autour de vous a besoin d'un
+                  Koudmain. Un clic pour manifester votre intérêt.`}
                 </p>
               </div>
             </div>
@@ -118,8 +118,8 @@ function WorkerPage() {
               <div>
                 <h4 className="text-2xl font-bold text-primary">Travaillez et encaissez</h4>
                 <p className="text-zinc-500 mt-2">
-                  Réalisez votre mission. Une fois terminée, le contrat est signé numériquement et
-                  votre paiement est déclenché via Stripe.
+                  {`Réalisez votre mission. Une fois terminée, le contrat est signé numériquement et
+                  votre paiement est déclenché via Stripe.`}
                 </p>
               </div>
             </div>
@@ -129,10 +129,10 @@ function WorkerPage() {
 
       <section className="bg-primary px-6 py-20 text-center text-white">
         <h2 className="mb-6 text-3xl font-black">
-          Prêt à reprendre le contrôle de votre emploi du temps ?
+          {`Prêt à reprendre le contrôle de votre emploi du temps ?`}
         </h2>
         <button className="rounded-xl bg-secondary px-10 py-5 text-lg font-black text-primary transition-all hover:scale-105 active:scale-95">
-          Rejoindre la liste d'attente
+          {`Rejoindre la liste d'attente`}
         </button>
       </section>
     </motion.div>

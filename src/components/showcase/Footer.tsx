@@ -8,8 +8,8 @@ function Footer() {
           <div className="col-span-1 md:col-span-1">
             <h2 className="text-2xl font-black tracking-tighter mb-4 text-white">KOUDMAIN</h2>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              La solution hybride entre l'intérim et le modèle Uber pour la restauration. Mise en
-              relation en temps réel pour sauver vos services.
+              {`La solution hybride entre l'intérim et le modèle Uber pour la restauration. Mise en
+              relation en temps réel pour sauver vos services.`}
             </p>
           </div>
 

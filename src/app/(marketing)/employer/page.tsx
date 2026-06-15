@@ -2,6 +2,7 @@
 import Counter from '@/components/utils/Counter';
 import { motion } from 'framer-motion';
 import { Users, FileText, TrendingUp, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 
 function EmployerPage() {
   return (
@@ -14,16 +15,17 @@ function EmployerPage() {
       <section className="px-6 py-24 text-center">
         <div className="mx-auto max-w-4xl">
           <h1 className="mb-6 text-5xl font-black leading-[1.1] tracking-tight md:text-7xl text-primary">
-            Ne laissez plus un imprévu <br />
-            <span className="text-secondary">couler votre service.</span>
+            {`Ne laissez plus un imprévu`}
+            <br />
+            <span className="text-secondary">{'couler votre service.'}</span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-zinc-500">
-            Un désistement à 11h ? Un rush terrasse imprévu ? Trouvez un extra qualifié en moins
-            d'une heure et déléguez toute la paperasse à Koudmain.
+            {`Un désistement à 11h ? Un rush terrasse imprévu ? Trouvez un extra qualifié en moins
+            d'une heure et déléguez toute la paperasse à Koudmain.`}
           </p>
           <div className="flex justify-center">
             <button className="rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-black text-center">
-              Publier une mission d'urgence
+              {`Publier une mission d'urgence`}
             </button>
           </div>
         </div>
@@ -84,9 +86,9 @@ function EmployerPage() {
               </div>
               <h3 className="mb-3 text-2xl font-bold text-primary">Conformité Totale</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Koudmain génère instantanément le <strong>CDDU</strong> et réalise la{' '}
+                {`Koudmain génère instantanément le <strong>CDDU</strong> et réalise la{' '}
                 <strong>DPAE</strong> auprès de l'URSSAF. Vous êtes protégé, sans lever le petit
-                doigt.
+                doigt.`}
               </p>
             </div>
 
@@ -96,8 +98,8 @@ function EmployerPage() {
               </div>
               <h3 className="mb-3 text-2xl font-bold text-primary">Qualité Garantie</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Accédez à des profils notés par vos confrères. Fini les "no-shows" : notre système
-                de notation bidirectionnel assure le sérieux des extras.
+                {`Accédez à des profils notés par vos confrères. Fini les "no-shows" : notre système
+                de notation bidirectionnel assure le sérieux des extras.`}
               </p>
             </div>
 
@@ -137,9 +139,11 @@ function EmployerPage() {
               </ul>
             </div>
             <div className="md:w-1/2 rounded-[32px] overflow-hidden border-4 border-white shadow-2xl">
-              <img
+              <Image
                 src="/images/restaurateur-souriant.png"
                 alt="Un restaurateur serein utilisant l'application Koudmain en cuisine"
+                width={1800}
+                height={1524}
                 className="w-full h-full object-cover aspect-square"
               />
             </div>
@@ -153,11 +157,11 @@ function EmployerPage() {
             Prêt à sauver votre prochain service ?
           </h2>
           <p className="mb-10 text-zinc-400 text-lg">
-            Rejoignez les premiers restaurateurs qui testent Koudmain et simplifiez votre gestion
-            dès aujourd'hui.
+            {`Rejoignez les premiers restaurateurs qui testent Koudmain et simplifiez votre gestion
+            dès aujourd'hui.`}
           </p>
           <button className="rounded-xl bg-secondary px-10 py-5 text-lg font-black text-primary transition-all hover:scale-105 active:scale-95">
-            Créer un compte établissement
+            {`Créer un compte établissement`}
           </button>
         </div>
       </section>

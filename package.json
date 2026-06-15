@@ -6,8 +6,8 @@
     "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start -p 8080",
-    "lint:check": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint:check": "eslint \"src/**/*.{ts,tsx,js}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx,js}\" --fix",
     "format:fix": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\""
   },
