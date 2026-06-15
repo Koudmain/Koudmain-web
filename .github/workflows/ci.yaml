@@ -16,7 +16,7 @@ concurrency:
 jobs:
   force-ci:
     name: "Force CI"
-    if: github.event_name == 'push' || (github.event.action == 'labeled' && github.event.label.name == 'force ci')
+    if: github.event_name == 'push' || (github.event.action == 'labeled' && (github.event.label.name == 'force ci' || github.event.label.name == 'to merge'))
     uses: Koudmain/.github/.github/workflows/orchestrator-ci.yml@KDM-47/fix-bug-force-ci
     permissions:
       pull-requests: write
