@@ -57,7 +57,7 @@ function Header() {
             Connexion
           </button>
           <button className="rounded-full bg-secondary px-6 py-2.5 text-sm font-extrabold text-white shadow-lg shadow-orange-200 transition-transform hover:scale-105 active:scale-95">
-            S'inscrire
+            {`S'inscrire`}
           </button>
         </div>
       </div>

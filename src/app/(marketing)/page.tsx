@@ -18,8 +18,8 @@ function HomePage() {
             <span className="text-secondary">en un instant.</span>
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-zinc-500">
-            Koudmain est la solution hybride entre l'intérim et le modèle Uber pour la restauration.
-            Mise en relation en temps réel pour sauver vos services.
+            {`Koudmain est la solution hybride entre l'intérim et le modèle Uber pour la restauration.
+            Mise en relation en temps réel pour sauver vos services.`}
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
@@ -62,8 +62,8 @@ function HomePage() {
               </div>
               <h3 className="mb-3 text-2xl font-bold text-primary">Urgence Maîtrisée</h3>
               <p className="text-zinc-500 leading-relaxed">
-                Un désistement à 11h ? Trouvez un remplaçant qualifié en{' '}
-                <strong>moins d'une heure</strong> pour sauver votre service.
+                {`Un désistement à 11h ? Trouvez un remplaçant qualifié en{' '}
+                <strong>moins d'une heure</strong> pour sauver votre service.`}
               </p>
             </div>
 
