@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
     screens: {
@@ -45,11 +45,11 @@ module.exports = {
       96: '24rem',
     },
     borderRadius: {
-      'none': '0',
-      'sm': '.125rem',
+      none: '0',
+      sm: '.125rem',
       DEFAULT: '.25rem',
-      'lg': '.5rem',
-      'full': '9999px'
+      lg: '.5rem',
+      full: '9999px',
     },
     fontFamily: {
       // For the Koudmain project we're currently using 2 fonts:
@@ -60,12 +60,12 @@ module.exports = {
       jakarta: ['Plus Jakarta Sans'],
     },
     opacity: {
-      '0': '0',
-      '20': '0.2',
-      '40': '0.4',
-      '60': '0.6',
-      '80': '0.8',
-      '100': '1',
+      0: '0',
+      20: '0.2',
+      40: '0.4',
+      60: '0.6',
+      80: '0.8',
+      100: '1',
     },
     extend: {
       colors: {
@@ -245,9 +245,9 @@ module.exports = {
           error: 'rgb(var(--color-indicator-error)/<alpha-value>)',
         },
         utils: {
-          star: "#F59E0B",
+          star: '#F59E0B',
           heart: '#E11D48',
-        }
+        },
       },
       fontFamily: {
         heading: undefined,
