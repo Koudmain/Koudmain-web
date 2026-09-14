@@ -7,7 +7,7 @@ function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-white font-sans text-primary">
       <Header />
-      <main className="grow pt-20">{children}</main>
+      <main className="grow">{children}</main>
       <Footer />
     </div>
   );

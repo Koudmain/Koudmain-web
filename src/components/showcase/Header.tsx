@@ -1,67 +1,112 @@
 'use client';
-import Link from 'next/link';
+
 import Image from 'next/image';
+import Link from 'next/link';
+import { Home, Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { Home } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { createElement, useState } from 'react';
+
+const navigation = [
+  { href: '/', label: 'Accueil', icon: Home },
+  { href: '/worker', label: 'Travailleur' },
+  { href: '/employer', label: 'Employeur' },
+];
 
 function Header() {
   const pathname = usePathname();
-
-  const tabs = [
-    { id: '/', label: <Home size={18} />, href: '/' },
-    { id: '/worker', label: 'Travailleur', href: '/worker' },
-    { id: '/employer', label: 'Employeur', href: '/employer' },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-zinc-100 bg-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/images/logo_black_transparant.png"
-              alt="Logo Koudmain"
-              width={40}
-              height={40}
-              className="h-8 w-8 object-contain transition-transform group-hover:scale-110"
-              priority
-            />
-            <span className="text-2xl font-black tracking-tighter text-primary">KOUDMAIN</span>
-          </Link>
-
-          <div className="relative hidden items-center gap-1 rounded-full bg-zinc-100 p-1 md:flex">
-            {tabs.map((tab) => (
+    <header className="sticky top-0 z-50 border-b border-black/6 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-[71px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-[7.65%]">
+        <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Koudmain, accueil">
+          <Image src="/images/logo_black_transparant.png" alt="" width={32} height={38} priority />
+          <span className="text-[22px] font-semibold tracking-tight text-primary sm:text-2xl">
+            KOUD<span className="text-secondary">MAIN</span>
+          </span>
+        </Link>
+        <nav
+          className="hidden rounded-full bg-black/4.5 p-1 md:flex"
+          aria-label="Navigation principale"
+        >
+          {navigation.map(({ href, label, icon }) => {
+            const active = pathname === href;
+            return (
               <Link
-                key={tab.id}
-                href={tab.href}
-                className={`relative z-10 rounded-full px-6 py-1.5 text-sm font-medium transition-colors ${
-                  pathname === tab.href ? 'text-primary' : 'text-zinc-500'
-                }`}
+                key={href}
+                href={href}
+                className={`relative flex h-[34px] items-center justify-center rounded-full px-4 text-sm font-semibold transition-colors lg:px-5 ${active ? 'text-primary' : 'text-zinc-400 hover:text-primary'}`}
               >
-                {pathname === tab.href && (
-                  <motion.div
-                    layoutId="active-pill"
-                    className="absolute inset-0 z-[-1] rounded-full bg-white shadow-sm"
+                {active && (
+                  <motion.span
+                    layoutId="active-navigation"
+                    className="absolute inset-0 rounded-full bg-white shadow-[0_4px_4px_rgba(0,0,0,0.10)]"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-                <span className="relative z-10">{tab.label}</span>
+                <span className="relative flex items-center gap-2">
+                  {icon ? createElement(icon, { size: 18, strokeWidth: 1.8 }) : label}
+                </span>
               </Link>
-            ))}
-          </div>
+            );
+          })}
+        </nav>
+        <div className="hidden items-center gap-6 md:flex">
+          <Link
+            href="/#comment-ca-marche"
+            className="text-sm font-bold text-primary transition-colors hover:text-secondary"
+          >
+            En savoir plus
+          </Link>
+          <Link
+            href="/#liste-attente"
+            className="rounded-full bg-secondary px-5 py-3 text-sm font-bold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:-translate-y-0.5 hover:bg-secondary-600"
+          >
+            Liste d&apos;attente
+          </Link>
         </div>
-
-        <div className="flex items-center gap-6">
-          <button className="text-sm font-bold hover:text-secondary transition-colors">
-            Connexion
-          </button>
-          <button className="rounded-full bg-secondary px-6 py-2.5 text-sm font-extrabold text-white shadow-lg shadow-orange-200 transition-transform hover:scale-105 active:scale-95">
-            {`S'inscrire`}
-          </button>
-        </div>
+        <button
+          type="button"
+          className="grid size-10 place-items-center rounded-full text-primary md:hidden"
+          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          {isOpen ? <X /> : <Menu />}
+        </button>
       </div>
-    </nav>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute inset-x-0 top-[71px] border-b border-zinc-100 bg-white px-5 py-5 shadow-lg md:hidden"
+            aria-label="Navigation mobile"
+          >
+            <div className="mx-auto flex max-w-md flex-col gap-1">
+              {navigation.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-xl px-4 py-3 font-semibold text-primary hover:bg-zinc-50"
+                >
+                  {label}
+                </Link>
+              ))}
+              <Link
+                href="/#liste-attente"
+                onClick={() => setIsOpen(false)}
+                className="mt-2 rounded-xl bg-secondary px-4 py-3 text-center font-bold text-white"
+              >
+                Liste d&apos;attente
+              </Link>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
 
