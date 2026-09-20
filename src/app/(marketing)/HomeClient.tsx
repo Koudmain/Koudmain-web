@@ -253,28 +253,41 @@ export default function HomeClient() {
             {questions.map(([question, answer], index) => {
               const isOpen = openQuestion === index;
               return (
-                <article key={question} className="rounded-xl border border-zinc-200 bg-white">
+                <article
+                  key={question}
+                  className="overflow-hidden rounded-xl border border-zinc-200 bg-white"
+                >
                   <button
                     type="button"
                     onClick={() => setOpenQuestion(isOpen ? -1 : index)}
                     className="flex w-full items-center justify-between gap-4 p-4 text-left text-base font-semibold text-primary sm:p-6"
+                    aria-expanded={isOpen}
                   >
                     <span>{question}</span>
                     <ChevronDown
                       size={20}
-                      className={`shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                      className={`shrink-0 text-zinc-400 transition-transform duration-300 ease-out ${
+                        isOpen ? 'rotate-180 text-secondary' : ''
+                      }`}
                     />
                   </button>
                   <AnimatePresence initial={false}>
                     {isOpen && (
-                      <motion.p
+                      <motion.div
+                        key="content"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden px-4 pb-4 text-sm font-medium leading-[22px] text-zinc-500 sm:px-6 sm:pb-6"
+                        transition={{
+                          height: { duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] },
+                          opacity: { duration: 0.2, ease: 'easeInOut' },
+                        }}
+                        className="overflow-hidden"
                       >
-                        {answer}
-                      </motion.p>
+                        <p className="px-4 pb-5 text-base font-normal leading-relaxed text-zinc-600 sm:px-6 sm:pb-6">
+                          {answer}
+                        </p>
+                      </motion.div>
                     )}
                   </AnimatePresence>
                 </article>
