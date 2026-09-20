@@ -42,8 +42,7 @@ function EmployerPage() {
       <section className="px-6 py-20 text-center lg:py-24">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-4xl font-semibold leading-tight text-primary sm:text-5xl lg:text-[44px]">
-            Ne laissez plus un imprévu
-            <br />
+            Ne laissez plus un imprévu <br />
             <span className="text-secondary">couler votre service.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-[600px] text-base font-medium leading-6 text-zinc-400">
@@ -52,7 +51,7 @@ function EmployerPage() {
           </p>
           <Link
             href="/#liste-attente"
-            className="mt-10 inline-flex rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600"
+            className="mt-10 inline-flex w-full justify-center rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600 sm:w-auto"
           >
             Rejoindre la liste d&apos;attente
           </Link>
@@ -63,7 +62,7 @@ function EmployerPage() {
           {metrics.map(([value, label], index) => (
             <div key={label}>
               <p
-                className={`text-2xl font-semibold ${index === 3 ? 'text-secondary' : 'text-primary'}`}
+                className={`text-xl font-semibold sm:text-2xl ${index === 3 ? 'text-secondary' : 'text-primary'}`}
               >
                 {value}
               </p>
@@ -114,7 +113,7 @@ function EmployerPage() {
             alt="Restaurateur souriant"
             width={1140}
             height={1524}
-            className="h-[360px] w-[240px] rounded-sm object-cover shadow-lg md:h-[427px] md:w-[285px]"
+            className="mx-auto h-[360px] w-[240px] rounded-sm object-cover shadow-lg md:mx-0 md:h-[427px] md:w-[285px]"
           />
         </div>
       </section>
@@ -128,7 +127,7 @@ function EmployerPage() {
         </p>
         <Link
           href="/#liste-attente"
-          className="mt-10 inline-flex rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600"
+          className="mt-10 inline-flex w-full justify-center rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600 sm:w-auto"
         >
           Rejoindre la liste d&apos;attente
         </Link>

@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/6 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-[71px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-[7.65%]">
+      <div className="mx-auto flex h-[71px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-[7.65%]">
         <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Koudmain, accueil">
           <Image src="/images/logo_black_transparant.png" alt="" width={32} height={38} priority />
           <span className="text-[22px] font-semibold tracking-tight text-primary sm:text-2xl">
@@ -81,7 +81,7 @@ function Header() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="absolute inset-x-0 top-[71px] border-b border-zinc-100 bg-white px-5 py-5 shadow-lg md:hidden"
+            className="absolute inset-x-0 top-[71px] border-b border-zinc-100 bg-white px-6 py-5 shadow-lg md:hidden"
             aria-label="Navigation mobile"
           >
             <div className="mx-auto flex max-w-md flex-col gap-1">

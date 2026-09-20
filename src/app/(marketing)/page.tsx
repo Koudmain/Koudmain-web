@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, Clock, FileCheck, Mail, ShieldCheck } from 'lucide-react';
+import { ChevronDown, Clock, FileCheck, Loader2, Mail, ShieldCheck } from 'lucide-react';
 import { createElement, FormEvent, useState } from 'react';
 
 const benefits = [
@@ -75,43 +75,110 @@ const questions = [
 
 function WaitlistForm({ compact = false }: { compact?: boolean }) {
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const [honeypot, setHoneypot] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (email.trim()) setSubmitted(true);
+    if (!email.trim() || status === 'loading') return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          source: compact ? 'bottom_cta' : 'hero',
+          honeypot,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Une erreur est survenue.');
+      }
+
+      setStatus('success');
+      setEmail('');
+      setHoneypot('');
+    } catch (err: unknown) {
+      setStatus('error');
+      setErrorMessage(
+        err instanceof Error ? err.message : 'Une erreur est survenue. Veuillez réessayer.',
+      );
+    }
   };
-  if (submitted)
+
+  if (status === 'success')
     return (
-      <p className="rounded-lg bg-secondary/10 px-5 py-4 text-center text-sm font-semibold text-secondary">
-        Merci ! Nous vous recontacterons très bientôt.
-      </p>
+      <div className="rounded-lg bg-secondary/10 px-5 py-4 text-center text-sm font-semibold text-secondary">
+        Merci ! Vous êtes bien inscrit sur la liste d’attente.
+      </div>
     );
+
   return (
-    <form onSubmit={submit} className={`flex gap-3 ${compact ? 'w-full' : 'w-full max-w-[480px]'}`}>
-      <label className="flex h-[52px] min-w-0 flex-1 items-center gap-3 rounded-lg border border-zinc-200 bg-white px-4 focus-within:border-secondary focus-within:ring-2 focus-within:ring-secondary/15">
-        <Mail size={20} className="shrink-0 text-zinc-400" />
+    <form
+      onSubmit={submit}
+      className={`flex w-full flex-col gap-3 sm:flex-row ${compact ? '' : 'max-w-[480px]'}`}
+    >
+      <div className="absolute -left-[9999px] -top-[9999px] opacity-0" aria-hidden="true">
         <input
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          required
-          placeholder="Votre adresse email..."
-          aria-label="Votre adresse email"
-          className="min-w-0 flex-1 bg-transparent text-[15px] text-primary outline-none placeholder:text-zinc-400"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(event) => setHoneypot(event.target.value)}
         />
-      </label>
+      </div>
+      <div className="w-full sm:w-auto sm:flex-1">
+        <label className="flex h-[52px] w-full min-w-0 shrink-0 items-center gap-3 rounded-lg border border-zinc-200 bg-white px-4 focus-within:border-secondary focus-within:ring-2 focus-within:ring-secondary/15">
+          <Mail size={20} className="shrink-0 text-zinc-400" />
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+              if (status === 'error') setStatus('idle');
+            }}
+            required
+            disabled={status === 'loading'}
+            placeholder="Votre adresse email..."
+            aria-label="Votre adresse email"
+            className="min-w-0 flex-1 bg-transparent text-[15px] text-primary outline-none placeholder:text-zinc-400 disabled:opacity-50"
+          />
+        </label>
+        {status === 'error' && (
+          <p className="mt-2 text-left text-xs font-medium text-error">{errorMessage}</p>
+        )}
+      </div>
       <button
         type="submit"
-        className="h-[52px] shrink-0 rounded-lg bg-secondary px-5 text-[15px] font-bold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600"
+        disabled={status === 'loading'}
+        className="flex h-[52px] w-full shrink-0 items-center justify-center gap-2 rounded-lg bg-secondary px-6 text-[15px] font-bold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600 disabled:opacity-75 sm:w-auto"
       >
-        Rejoindre
+        {status === 'loading' ? (
+          <>
+            <Loader2 size={18} className="animate-spin" />
+            <span>Envoi...</span>
+          </>
+        ) : (
+          'Rejoindre'
+        )}
       </button>
     </form>
   );
 }
 
 function HomePage() {
-  const [openQuestion, setOpenQuestion] = useState(0);
+  const [openQuestion, setOpenQuestion] = useState(-1);
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -120,9 +187,9 @@ function HomePage() {
     >
       <section
         id="liste-attente"
-        className="mx-auto flex min-h-[700px] max-w-[1440px] flex-col items-center gap-12 px-6 py-16 sm:px-10 lg:flex-row lg:gap-16 lg:px-[7.65%] lg:py-20"
+        className="mx-auto flex max-w-[1440px] flex-col items-center gap-12 px-6 py-16 sm:px-10 lg:min-h-[700px] lg:flex-row lg:gap-16 lg:px-[7.65%] lg:py-20"
       >
-        <div className="order-2 flex-1 lg:order-1">
+        <div className="order-2 flex-1 w-full text-center lg:order-1 lg:text-left">
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,7 +203,7 @@ function HomePage() {
             La plateforme de recrutement express en restauration. Que vous soyez restaurateur ou
             extra qualifié, inscrivez-vous pour un accès prioritaire à notre lancement.
           </p>
-          <div className="mt-8">
+          <div className="mx-auto mt-8 w-full max-w-[480px] lg:mx-0">
             <WaitlistForm />
           </div>
         </div>
@@ -192,7 +259,7 @@ function HomePage() {
               Une fois inscrit, voici le parcours d’accès exclusif à notre réseau.
             </p>
           </div>
-          <div className="mt-16 grid gap-10 md:grid-cols-3 md:gap-12">
+          <div className="mt-10 grid gap-10 md:mt-16 md:grid-cols-3 md:gap-12">
             {steps.map(([title, text], index) => (
               <div key={title}>
                 <div className="flex items-center gap-4">
@@ -223,7 +290,7 @@ function HomePage() {
                   <button
                     type="button"
                     onClick={() => setOpenQuestion(isOpen ? -1 : index)}
-                    className="flex w-full items-center justify-between gap-4 p-6 text-left text-base font-semibold text-primary"
+                    className="flex w-full items-center justify-between gap-4 p-4 text-left text-base font-semibold text-primary sm:p-6"
                   >
                     <span>{question}</span>
                     <ChevronDown
@@ -237,7 +304,7 @@ function HomePage() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden px-6 pb-6 text-sm font-medium leading-[22px] text-zinc-500"
+                        className="overflow-hidden px-4 pb-4 text-sm font-medium leading-[22px] text-zinc-500 sm:px-6 sm:pb-6"
                       >
                         {answer}
                       </motion.p>
@@ -251,14 +318,14 @@ function HomePage() {
       </section>
       <section className="px-6 py-20 text-center sm:px-10 lg:px-[7.65%] lg:py-[100px]">
         <div className="mx-auto max-w-[800px]">
-          <h2 className="text-3xl font-bold leading-tight text-primary sm:text-[40px]">
+          <h2 className="text-3xl font-bold leading-tight text-primary sm:text-[40px] sm:leading-tight">
             Prêt à révolutionner votre gestion RH ?
           </h2>
           <p className="mt-4 text-lg font-medium leading-[26px] text-zinc-500">
             Ne laissez plus un imprévu couler votre prochain service ou limiter votre liberté.
             Rejoignez la liste d’attente fondatrice dès aujourd’hui.
           </p>
-          <div className="mx-auto mt-10 max-w-[520px]">
+          <div className="mx-auto mt-10 w-full max-w-[520px]">
             <WaitlistForm compact />
           </div>
         </div>

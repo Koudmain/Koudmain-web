@@ -48,8 +48,7 @@ function WorkerPage() {
       <section className="px-6 py-20 text-center lg:py-24">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-4xl font-semibold leading-tight text-primary sm:text-5xl lg:text-[44px]">
-            Travaillez quand vous voulez,
-            <br />
+            Travaillez quand vous voulez, <br />
             <span className="text-secondary">où vous voulez.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-[561px] text-base font-medium leading-6 text-zinc-400">
@@ -58,7 +57,7 @@ function WorkerPage() {
           </p>
           <Link
             href="/#liste-attente"
-            className="mt-10 inline-flex rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600"
+            className="mt-10 inline-flex w-full justify-center rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600 sm:w-auto"
           >
             Rejoindre la liste d&apos;attente
           </Link>
@@ -83,14 +82,14 @@ function WorkerPage() {
           <h2 className="text-3xl font-semibold text-primary sm:text-4xl">
             Encaisser vos premiers euros en <span className="text-secondary">3 étapes</span>
           </h2>
-          <div className="mt-16 space-y-10">
+          <div className="mt-10 space-y-10 md:mt-16">
             {steps.map(([title, text], index) => (
               <article key={title} className="flex gap-6">
                 <span className="grid size-10 shrink-0 place-items-center rounded-full bg-secondary text-xl font-semibold text-white">
                   {index + 1}
                 </span>
                 <div>
-                  <h3 className="text-2xl font-semibold text-primary">{title}</h3>
+                  <h3 className="text-xl font-semibold text-primary sm:text-2xl">{title}</h3>
                   <p className="mt-3 text-sm font-medium leading-[25px] text-zinc-400">{text}</p>
                 </div>
               </article>
@@ -104,7 +103,7 @@ function WorkerPage() {
         </h2>
         <Link
           href="/#liste-attente"
-          className="mt-10 inline-flex rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600"
+          className="mt-10 inline-flex w-full justify-center rounded bg-secondary px-10 py-5 text-base font-semibold text-white shadow-[0_4px_12px_rgba(216,74,34,0.20)] transition hover:bg-secondary-600 sm:w-auto"
         >
           Rejoindre la liste d&apos;attente
         </Link>
