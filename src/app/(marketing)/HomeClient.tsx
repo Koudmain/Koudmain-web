@@ -40,6 +40,8 @@ export const benefits = [
   },
 ];
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function WaitlistForm({ compact = false }: { compact?: boolean }) {
   const [email, setEmail] = useState('');
   const [honeypot, setHoneypot] = useState('');
@@ -48,28 +50,56 @@ function WaitlistForm({ compact = false }: { compact?: boolean }) {
 
   const submit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!email.trim() || status === 'loading') return;
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedEmail || status === 'loading') return;
+
+    if (!EMAIL_REGEX.test(trimmedEmail)) {
+      setStatus('error');
+      setErrorMessage('Format d’adresse email invalide.');
+      return;
+    }
+
+    if (honeypot && honeypot.trim() !== '') {
+      setStatus('success');
+      setEmail('');
+      setHoneypot('');
+      return;
+    }
+
+    try {
+      const storageKey = `kdm_waitlist_${trimmedEmail}`;
+      const lastSent = localStorage.getItem(storageKey);
+      if (lastSent && Date.now() - Number(lastSent) < 5 * 60 * 1000) {
+        setStatus('success');
+        setEmail('');
+        return;
+      }
+    } catch {
+      // LocalStorage might be unavailable in some private windows
+    }
 
     setStatus('loading');
     setErrorMessage('');
 
+    const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL || '';
+
     try {
-      const response = await fetch('/api/waitlist', {
+      await fetch(webhookUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify({
-          email: email.trim(),
+          email: trimmedEmail,
           source: compact ? 'bottom_cta' : 'hero',
-          honeypot,
         }),
+        mode: 'no-cors',
       });
 
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Une erreur est survenue.');
+      try {
+        localStorage.setItem(`kdm_waitlist_${trimmedEmail}`, Date.now().toString());
+      } catch {
+        // Ignore
       }
 
       setStatus('success');
