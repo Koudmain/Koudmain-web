@@ -97,10 +97,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+    const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL;
 
     if (!webhookUrl) {
-      console.error('GOOGLE_SHEET_WEBHOOK_URL is not defined in environment variables.');
+      console.error(
+        'NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL is not defined in environment variables.',
+      );
       return NextResponse.json(
         { success: false, error: 'Service temporairement indisponible.' },
         { status: 500 },
