@@ -4,8 +4,11 @@ module.exports = {
   darkMode: 'class',
   theme: {
     screens: {
-      // Used to set the responsible breakpoint
-      // No need here in the mobile version
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
     },
     spacing: {
       px: '1px',
