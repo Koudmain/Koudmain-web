@@ -20,7 +20,7 @@ export const questions = [
   ],
   [
     'Quand la plateforme sera-t-elle lancée ?',
-    'Le lancement officiel est prévu pour le deuxième trimestre 2026. L’accès sera ouvert progressivement, ville par ville, en commençant par l’Île-de-France.',
+    'Le lancement officiel est prévu pour le deuxième trimestre 2027. L’accès sera ouvert progressivement, ville par ville, en commençant par l’Île-de-France.',
   ],
   [
     'L’inscription sur la liste d’attente m’engage-t-elle à quelque chose ?',
