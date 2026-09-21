@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import './global.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://koudmain.fr';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.koudmain.fr';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

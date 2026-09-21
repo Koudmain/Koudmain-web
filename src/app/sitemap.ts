@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://koudmain.fr';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.koudmain.fr';
   const lastModified = new Date();
 
   return [

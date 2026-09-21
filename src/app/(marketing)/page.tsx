@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { questions } from '@/constant/marketing';
 import HomeClient from './HomeClient';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://koudmain.fr';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.koudmain.fr';
 
 export const metadata: Metadata = {
   title: 'Recrutement Express en Restauration en Moins d’1h',
