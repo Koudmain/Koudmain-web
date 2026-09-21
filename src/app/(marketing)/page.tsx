@@ -5,32 +5,32 @@ import HomeClient from './HomeClient';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.koudmain.fr';
 
 export const metadata: Metadata = {
-  title: 'Recrutement Express en Restauration en Moins d’1h',
+  title: 'Recrutement Express en Restauration',
   description:
     'La plateforme de recrutement express en restauration. Que vous soyez restaurateur ayant un imprévu ou extra qualifié (serveur, barman, cuisinier), inscrivez-vous pour un accès prioritaire.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Koudmain | Recrutement Express en Restauration en Moins d’1h',
+    title: 'Koudmain | Recrutement Express en Restauration',
     description:
       'L’application de mise en relation express pour la restauration. Trouvez un extra qualifié en moins d’une heure ou travaillez en toute liberté avec CDDU automatisé.',
     url: '/',
     images: [
       {
-        url: '/images/figma/waitlist-phone.png',
-        width: 864,
-        height: 1184,
+        url: '/images/waitlist-phone-v3.png',
+        width: 1479,
+        height: 2160,
         alt: 'Application Koudmain - Recrutement express restauration',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Koudmain | Recrutement Express en Restauration en Moins d’1h',
+    title: 'Koudmain | Recrutement Express en Restauration',
     description:
       'L’application de mise en relation express pour la restauration. Trouvez un extra qualifié en moins d’une heure.',
-    images: ['/images/figma/waitlist-phone.png'],
+    images: ['/images/waitlist-phone-v3.png'],
   },
 };
 

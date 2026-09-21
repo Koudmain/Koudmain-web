@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import EmployerClient from './EmployerClient';
 
 export const metadata: Metadata = {
-  title: 'Recrutez un Extra en Restauration en Moins d’1h | Employeurs',
+  title: 'Recrutez un Extra en 1h',
   description:
     'Ne laissez plus un imprévu couler votre service. Trouvez des extras qualifiés et notés (serveurs, barmans, commis, cuisiniers) disponibles en moins d’une heure. CDDU et DPAE URSSAF 100% automatisés.',
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: '/employer',
   },
   openGraph: {
-    title: 'Recrutez un Extra en Restauration en Moins d’1h | Koudmain',
+    title: 'Recrutez un Extra en 1h',
     description:
       'Fini les désistements de dernière minute. Trouvez un extra qualifié en moins d’une heure et déléguez toute la paperasse administrative.',
     url: '/employer',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Recrutez un Extra en Restauration en Moins d’1h | Koudmain',
+    title: 'Recrutez un Extra en 1h',
     description:
       'Fini les désistements de dernière minute. Trouvez un extra qualifié en moins d’une heure.',
     images: ['/images/restaurateur-souriant.png'],

@@ -182,10 +182,10 @@ export default function HomeClient() {
         >
           <div className="h-[400px] w-[296px] rounded-[32px] border-4 border-zinc-200 bg-zinc-50 p-3 shadow-[0_20px_40px_rgba(0,0,0,0.08)] sm:h-[500px] sm:w-[370px] sm:rounded-[40px] sm:p-4 lg:h-[540px] lg:w-[400px]">
             <Image
-              src="/images/figma/waitlist-phone.png"
+              src="/images/waitlist-phone-v3.png"
               alt="Aperçu de l’application Koudmain"
-              width={864}
-              height={1184}
+              width={1479}
+              height={2160}
               priority
               className="size-full rounded-[23px] object-cover sm:rounded-[28px]"
             />

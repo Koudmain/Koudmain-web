@@ -6,8 +6,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.koudmain.fr';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Koudmain | Recrutement Express en Restauration en Moins d’1h',
-    template: '%s | Koudmain',
+    default: 'Koudmain | Recrutement Express en Restauration',
+    template: 'Koudmain | %s',
   },
   description:
     'L’outil de mise en relation express pour la restauration. Trouvez un extra qualifié (serveur, barman, cuisinier) en moins d’une heure ou décrochez vos missions en toute liberté avec CDDU automatisé.',
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
       'Trouvez un extra qualifié en moins d’une heure ou travaillez en toute liberté. CDDU et DPAE 100% automatisés.',
     images: [
       {
-        url: '/images/figma/waitlist-phone.png',
-        width: 864,
-        height: 1184,
+        url: '/images/waitlist-phone-v3.png',
+        width: 1479,
+        height: 2160,
         alt: 'Application Koudmain - Recrutement express restauration',
       },
     ],
@@ -62,24 +62,11 @@ export const metadata: Metadata = {
     title: 'Koudmain | Recrutement Express en Restauration',
     description:
       'Trouvez un extra qualifié en moins d’une heure ou travaillez en toute liberté. CDDU et DPAE 100% automatisés.',
-    images: ['/images/figma/waitlist-phone.png'],
+    images: ['/images/waitlist-phone-v3.png'],
   },
   icons: {
-    icon: [
-      {
-        url: '/images/logo_black_transparant.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/images/logo_white_transparant.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-    ],
-    apple: [
-      {
-        url: '/images/logo_black_transparant.png',
-      },
-    ],
+    icon: '/images/logo_black_transparant.png',
+    apple: '/images/logo_black_transparant.png',
   },
 };
 

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import WorkerClient from './WorkerClient';
 
 export const metadata: Metadata = {
-  title: 'Missions Extra en Restauration Rémunérées Rapidement | Travailleurs',
+  title: 'Missions Extra en 1 Clic',
   description:
     'Travaillez quand vous voulez, où vous voulez. Trouvez des missions d’extra en restauration (service en salle, bar, cuisine) payées rapidement et déclarées avec contrat CDDU automatisé.',
   keywords: [
@@ -18,24 +18,24 @@ export const metadata: Metadata = {
     canonical: '/worker',
   },
   openGraph: {
-    title: 'Missions Extra en Restauration Payées Rapidement | Koudmain',
+    title: 'Missions Extra en 1 Clic',
     description:
       'Un cours annulé ? Un week-end de libre ? Trouvez une mission d’extra en 1 clic et soyez payé rapidement en toute légalité.',
     url: '/worker',
     images: [
       {
-        url: '/images/figma/waitlist-phone.png',
-        width: 864,
-        height: 1184,
+        url: '/images/waitlist-phone-v3.png',
+        width: 1479,
+        height: 2160,
         alt: 'Application Koudmain pour les extras en restauration',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Missions Extra en Restauration Payées Rapidement | Koudmain',
+    title: 'Missions Extra en 1 Clic',
     description: 'Trouvez une mission d’extra en restauration en 1 clic et soyez payé rapidement.',
-    images: ['/images/figma/waitlist-phone.png'],
+    images: ['/images/waitlist-phone-v3.png'],
   },
 };
 
