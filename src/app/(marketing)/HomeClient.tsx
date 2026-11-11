@@ -81,10 +81,17 @@ function WaitlistForm({ compact = false }: { compact?: boolean }) {
     setStatus('loading');
     setErrorMessage('');
 
-    const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL || '';
+    const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL;
+    if (!webhookUrl) {
+      setStatus('error');
+      setErrorMessage('Service temporairement indisponible.');
+      return;
+    }
 
     try {
-      await fetch(webhookUrl, {
+      // text/plain keeps it a simple request (no preflight); the Apps Script answers with CORS
+      // headers, so the result can be read instead of assuming success.
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
@@ -93,8 +100,11 @@ function WaitlistForm({ compact = false }: { compact?: boolean }) {
           email: trimmedEmail,
           source: compact ? 'bottom_cta' : 'hero',
         }),
-        mode: 'no-cors',
       });
+      const result = (await response.json().catch(() => null)) as { status?: string } | null;
+      if (!response.ok || result?.status === 'error') {
+        throw new Error(`Waitlist webhook failed (${response.status})`);
+      }
 
       try {
         localStorage.setItem(`kdm_waitlist_${trimmedEmail}`, Date.now().toString());
@@ -106,10 +116,10 @@ function WaitlistForm({ compact = false }: { compact?: boolean }) {
       setEmail('');
       setHoneypot('');
     } catch (err: unknown) {
+      console.error('Waitlist submission failed:', err);
       setStatus('error');
-      setErrorMessage(
-        err instanceof Error ? err.message : 'Une erreur est survenue. Veuillez réessayer.',
-      );
+      // Network errors are in English ("Failed to fetch"): always show the same French message.
+      setErrorMessage('Impossible d’enregistrer votre inscription. Veuillez réessayer.');
     }
   };
 
